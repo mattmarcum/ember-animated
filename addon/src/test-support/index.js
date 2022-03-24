@@ -1,6 +1,6 @@
-import { importSync } from '@embroider/macros';
 import { resolve } from 'rsvp';
 import { run } from '@ember/runloop';
+import { getContext } from '@ember/test-helpers';
 import { Color } from '../color';
 import { relativeBounds } from '../-private/bounds';
 import { cumulativeTransform } from '../-private/transform';
@@ -22,7 +22,6 @@ export { Move } from '../motions/move';
 
 export function animationsSettled() {
   let idle;
-  let { getContext } = importSync('@ember/test-helpers');
   let { owner } = getContext();
   run(() => {
     idle = owner.lookup('service:-ea-motion').get('waitUntilIdle').perform();
