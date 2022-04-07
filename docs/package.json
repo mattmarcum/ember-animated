@@ -29,7 +29,7 @@
     "@ember/string": "^3.0.0",
     "@ember/test-helpers": "^2.7.0",
     "@fortawesome/ember-fontawesome": "^0.3.2",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@glimmer/component": "^1.1.1",
     "@glimmer/tracking": "^1.1.1",
     "broccoli-asset-rev": "^3.0.0",
