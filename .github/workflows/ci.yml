@@ -122,20 +122,18 @@ jobs:
         working-directory: test-app
 
   typescript-compatibility:
-    if: ${{ false }}  # disable for now
     name: Type checking - ${{ matrix.typescript-scenario }}
     runs-on: ubuntu-latest
     needs: 'test-library'
+    continue-on-error: true
 
     strategy:
       fail-fast: false
       matrix:
         typescript-scenario:
-          - typescript-4.2
-          - typescript-4.3
-          - typescript-4.4
-          - typescript-4.5
-          - typescript-next
+          - typescript@4.5
+          - typescript@4.6
+          - typescript@next
 
     steps:
       - uses: actions/checkout@v3
@@ -150,6 +148,9 @@ jobs:
           cache: 'pnpm'
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
+      - name: Update TS version
+        run: pnpm add --save-dev ${{ matrix.typescript-scenario }}
+        working-directory: addon
       - name: Type checking
-        run: ./node_modules/.bin/ember try:one --config-path="./config/ember-try-typescript.js" ${{ matrix.typescript-scenario }}
-        working-directory: test-app
+        run: tsc --noEmit
+        working-directory: addon
