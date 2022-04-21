@@ -110,13 +110,16 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 6.x
+
       - name: Install Node
         uses: actions/setup-node@v3
         with:
           node-version: 12.x
           cache: 'pnpm'
+
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
+
       - name: Run Tests
         run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }}
         working-directory: test-app
@@ -125,7 +128,6 @@ jobs:
     name: Type checking - ${{ matrix.typescript-scenario }}
     runs-on: ubuntu-latest
     needs: 'test-library'
-    continue-on-error: ${{ matrix.typescript-scenario == 'typescript@next' }}
 
     strategy:
       fail-fast: false
@@ -141,16 +143,20 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 6.x
+
       - name: Install Node
         uses: actions/setup-node@v3
         with:
           node-version: 12.x
           cache: 'pnpm'
+
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
+
       - name: Update TS version
-        run: pnpm add --save-dev ${{ matrix.typescript-scenario }}
+        run: pnpm add --ignore-scripts --save-dev ${{ matrix.typescript-scenario }}
         working-directory: addon
+
       - name: Type checking
         run: tsc --noEmit
         working-directory: addon
