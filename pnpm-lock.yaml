@@ -25,6 +25,7 @@ importers:
     specifiers:
       '@babel/core': ^7.17.9
       '@babel/plugin-proposal-decorators': ^7.17.9
+      '@babel/preset-typescript': ^7.16.7
       '@embroider/addon-dev': ^1.5.0
       '@embroider/addon-shim': ^1.5.0
       '@embroider/macros': ^1.5.0
@@ -57,6 +58,7 @@ importers:
     devDependencies:
       '@babel/core': 7.17.9
       '@babel/plugin-proposal-decorators': 7.17.9_@babel+core@7.17.9
+      '@babel/preset-typescript': 7.16.7_@babel+core@7.17.9
       '@embroider/addon-dev': 1.5.0_rollup@2.70.2
       '@glimmer/env': 0.1.7
       '@rollup/plugin-babel': 5.3.1_@babel+core@7.17.9+rollup@2.70.2
@@ -1454,6 +1456,20 @@ packages:
       '@babel/plugin-transform-dotall-regex': 7.16.7_@babel+core@7.17.9
       '@babel/types': 7.17.0
       esutils: 2.0.3
+
+  /@babel/preset-typescript/7.16.7_@babel+core@7.17.9:
+    resolution: {integrity: sha512-WbVEmgXdIyvzB77AQjGBEyYPZx+8tTsO50XtfozQrkW8QB2rLJpH2lgx0TRw5EJrBxOZQ+wCcyPVQvS8tjEHpQ==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.17.9
+      '@babel/helper-plugin-utils': 7.16.7
+      '@babel/helper-validator-option': 7.16.7
+      '@babel/plugin-transform-typescript': 7.16.8_@babel+core@7.17.9
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
 
   /@babel/runtime/7.12.18:
     resolution: {integrity: sha512-BogPQ7ciE6SYAUPtlm9tWbgI9+2AgqSam6QivMgXgAT+fKbgppaj4ZX15MHeLC1PVF5sNk70huBu20XxWOs8Cg==}
